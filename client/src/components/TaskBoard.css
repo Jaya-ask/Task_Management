@@ -1,0 +1,243 @@
+/* General styles */
+.board {
+    padding: 2rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: radial-gradient(circle, rgba(0, 128, 255, 0.8), rgba(255, 0, 128, 0.8));
+    background-attachment: fixed;
+    box-sizing: border-box;
+  }
+  
+  /* Header styles */
+  h1 {
+    font-size: clamp(1.5rem, 5vw, 3rem);
+    color: white;
+    margin-bottom: 2rem;
+    text-align: center;
+    font-weight: 600;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Add Task Button */
+  .add-task-button {
+    padding: 1rem 2rem;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+    margin-bottom: 2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    min-height: 48px;
+  }
+  
+  .add-task-button:hover {
+    background-color: #388e3c;
+    transform: translateY(-2px);
+  }
+  
+  /* Modal Overlay */
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  /* Modal Content */
+  .modal {
+    background: #fff;
+    padding: 2.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 500px; /* Prevents it from stretching too wide */
+    margin: 1rem;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 1;
+    transform: scale(1);
+  }
+  
+  
+  .modal h2 {
+    font-size: 2rem;
+    color: #111827;
+    margin-bottom: 1rem;
+    text-align: center;
+  }
+  
+  .modal input,
+  .modal select,
+  .modal textarea {
+    padding: 1rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.75rem;
+    font-size: 1.1rem;
+    width: 100%;
+    margin-top: 0.5rem;
+    transition: border 0.3s ease;
+    margin-bottom: 1.5rem;
+  }
+  
+  .modal input:focus,
+  .modal select:focus,
+  .modal textarea:focus {
+    border-color: #3b82f6;
+  }
+  
+  /* Modal Buttons */
+  .modal-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+  
+  .modal-buttons button {
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    width: 48%;
+    min-height: 48px;
+  }
+  
+  .modal-buttons button:first-child {
+    background-color: #3b82f6;
+    color: white;
+  }
+  
+  .modal-buttons button:first-child:hover {
+    background-color: #2563eb;
+    transform: translateY(-2px);
+  }
+  
+  .modal-buttons button:last-child {
+    background-color: #ef4444;
+    color: white;
+  }
+  
+  .modal-buttons button:last-child:hover {
+    background-color: #dc2626;
+    transform: translateY(-2px);
+  }
+  
+  /* Columns */
+  .columns {
+    display: flex;
+    gap: 2rem;
+    overflow-x: auto;
+    padding-bottom: 1rem;
+    justify-content: center;
+    width: 100%;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .column {
+    scroll-snap-align: start;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 1rem;
+    padding: 1rem;
+    min-width: 350px;
+    flex-shrink: 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+  }
+  
+  .column:hover {
+    transform: translateY(-5px);
+  }
+  
+  .column h3 {
+    text-align: center;
+    font-size: 1.5rem;
+    color: #111827;
+    margin-bottom: 1rem;
+  }
+  
+  /* Task Card */
+  .task {
+    background: #f9fafb;
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    min-height: 100px;
+  }
+  
+  .task:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  .task strong {
+    display: block;
+    font-size: clamp(1rem, 4vw, 1.2rem);
+    margin-bottom: 0.25rem;
+    color: #111827;
+  }
+  
+  .task p {
+    font-size: clamp(0.9rem, 3vw, 1rem);
+    color: #4b5563;
+    margin-bottom: 1rem;
+    font-weight: 400;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .task-form {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  
+    .columns {
+      flex-direction: column;
+      width: 100%;
+    }
+  
+    .column {
+      width: 100%;
+      margin-bottom: 1.5rem;
+    }
+  
+    .add-task-button {
+      padding: 0.8rem 1.5rem;
+    }
+  
+    .modal {
+      width: 90%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .modal {
+        padding: 1.5rem;
+        max-width: 95%;
+    }
+  
+    .modal-buttons {
+      flex-direction: column;
+    }
+  
+    .modal-buttons button {
+      width: 100%;
+    }
+  }
+  
